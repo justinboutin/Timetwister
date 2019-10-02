@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homescreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/rounded_corners"
+    android:layout_margin="10dp">
+
+    <include layout="@layout/logo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="@string/set_players"/>
+
+    <include
+        layout="@layout/players"
+        android:id="@+id/players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="@string/set_life"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/twenty"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/twenty_life"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/die"/>
+
+        <Button
+            android:id="@+id/thirty"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/thirty_life"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/die"/>
+
+        <Button
+            android:id="@+id/forty"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/fourty_life"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/die"/>
+
+        <Button
+            android:id="@+id/custom"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_life"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/die"/>
+
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/start_game"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/start_game"
+        android:textStyle="bold"
+        android:background="@drawable/die"/>
+
+</LinearLayout>

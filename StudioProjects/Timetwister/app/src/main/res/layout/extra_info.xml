@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <View
+        android:id="@+id/player_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corners"/>
+
+    <View android:id="@+id/center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/damage_tracker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/life_total"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:text="-10"/>
+
+    <TextView
+        android:id="@+id/life_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/center"
+        android:textSize="92sp"
+        android:textColor="@android:color/white"
+        android:text="@string/starting_life"/>
+
+    <ImageView
+        android:id="@+id/commander_damage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/separator"
+        android:layout_below="@+id/life_total"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/sword_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/commander_damage"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="0"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="3dp"
+        android:layout_height="fill_parent"
+        android:background="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/life_total"
+        android:layout_above="@+id/timer_location"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/separator"
+        android:layout_below="@+id/life_total"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/ic_poison_counter"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="0"/>
+
+    <LinearLayout
+        android:id="@+id/timer_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/player_color">
+        <include layout="@layout/timer"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_health"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/center"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus_icon"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/player_color"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:id="@+id/subtract_health"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/center"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/minus_icon"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/player_color"
+        android:paddingRight="10dp"/>
+
+</RelativeLayout>

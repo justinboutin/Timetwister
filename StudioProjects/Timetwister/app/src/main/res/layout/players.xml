@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center">
+
+    <include layout="@layout/die_one"
+             android:id="@+id/die_one"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+
+    <include layout="@layout/die_two"
+             android:id="@+id/die_two"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+
+    <include layout="@layout/die_three"
+             android:id="@+id/die_three"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+
+    <include layout="@layout/die_four"
+             android:id="@+id/die_four"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+
+    <include layout="@layout/die_five"
+             android:id="@+id/die_five"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+
+    <include layout="@layout/die_six"
+             android:id="@+id/die_six"/>
+
+</LinearLayout>

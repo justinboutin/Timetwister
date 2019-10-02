@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Timetwister</string>
+    <string name="set_players">Set Players</string>
+    <string name="set_life">Set Starting Life</string>
+    <string name="twenty_life">20</string>
+    <string name="thirty_life">30</string>
+    <string name="fourty_life">40</string>
+    <string name="custom_life">...</string>
+    <string name="start_game">Start Game</string>
+    <string name="starting_life">40</string>
+    <string name="timer">5:00</string>
+</resources>
