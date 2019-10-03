@@ -19,7 +19,7 @@ class FourPlayer : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.four_player, container, false)
-        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
         return view
     }
 }

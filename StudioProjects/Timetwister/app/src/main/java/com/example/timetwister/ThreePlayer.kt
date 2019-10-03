@@ -19,7 +19,7 @@ class ThreePlayer : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.three_player, container, false)
-        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
         return view
     }
 }

@@ -11,7 +11,7 @@
     <include layout="@layout/logo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="60dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="@string/fourty_life"
+            android:text="@string/forty_life"
             android:textStyle="bold"
             android:textSize="20sp"
             android:background="@drawable/die"/>
@@ -83,6 +83,29 @@
             android:background="@drawable/die"/>
 
     </LinearLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="@string/set_timer"/>
+
+    <EditText
+            android:id="@+id/timer_length"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/die"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="@string/timer"
+            android:inputType="time"/>
     
     <Button
         android:id="@+id/start_game"

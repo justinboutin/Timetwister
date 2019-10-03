@@ -1,5 +1,6 @@
 package com.example.timetwister
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -9,9 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.RelativeLayout
 
-class HomeFrag : Fragment() {
+class HomeScreenFrag : Fragment() {
 
     data class SetPlayers(var selected: Int,
                           val dieOne: RelativeLayout,
@@ -27,6 +29,7 @@ class HomeFrag : Fragment() {
                             val buttonForty: Button,
                             val buttonCustom: Button)
 
+    private val NUM_PLAYERS = "NUM_PLAYERS"
     private val oneSelected = 1
     private val twoSelected = 2
     private val threeSelected = 3
@@ -34,9 +37,12 @@ class HomeFrag : Fragment() {
     private val fiveSelected = 5
     private val sixSelected = 6
 
+    private val LIFETOTAL = "LIFETOTAL"
     private val twentyHP = 20
     private val thirtyHP = 30
     private val fortyHP = 40
+
+    private val TIMER = "TIMER"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -117,24 +123,18 @@ class HomeFrag : Fragment() {
             healthClick(health)
         }
 
+        val timerLength = view.findViewById<EditText>(R.id.timer_length)
 
         val startGame = view.findViewById<Button>(R.id.start_game)
         startGame.setOnClickListener {
-
-            when(players.selected) {
-                // 1 -> //launch 1 player
-                2 -> replaceFragment(TwoPlayer())
-                3 -> replaceFragment(ThreePlayer())
-                4 -> replaceFragment(FourPlayer())
-                5 -> replaceFragment(FivePlayer())
-                6 -> replaceFragment(SixPlayer())
-            }
+            startPlaying(players.selected, health.lifetotal, timerLength.text.toString())
         }
 
         return view
     }
 
     private fun dieClick(players: SetPlayers) {
+        // function that changes background and sets values when a die button is pressed
         players.dieOne.setBackgroundResource(R.drawable.die)
         players.dieTwo.setBackgroundResource(R.drawable.die)
         players.dieThree.setBackgroundResource(R.drawable.die)
@@ -154,6 +154,7 @@ class HomeFrag : Fragment() {
     }
 
     private fun healthClick(health: SetLifetotal) {
+        // function that changes background and sets value when lifetotal button is pressed
         health.buttonTwenty.setBackgroundResource(R.drawable.die)
         health.buttonThirty.setBackgroundResource(R.drawable.die)
         health.buttonForty.setBackgroundResource(R.drawable.die)
@@ -167,9 +168,15 @@ class HomeFrag : Fragment() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
-        transaction.replace(this.id, fragment)
-        transaction.commit()
+    private fun startPlaying(numPlayers: Int, lifetotal: Int, time: String) {
+        val intent = Intent(activity, PlayingActivity::class.java)
+
+        Log.d("here", numPlayers.toString())
+        Log.d("here", lifetotal.toString())
+
+        intent.putExtra(NUM_PLAYERS, numPlayers)
+        intent.putExtra(LIFETOTAL, lifetotal)
+        intent.putExtra(TIMER, time)
+        startActivity(intent)
     }
 }
