@@ -20,14 +20,14 @@
     <ImageView
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:src="@drawable/plus_icon"
+        android:src="@drawable/minus_icon"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/player_color"/>
 
     <ImageView
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:src="@drawable/minus_icon"
+        android:src="@drawable/plus_icon"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/player_color"/>
 
@@ -50,12 +50,6 @@
         android:textColor="@android:color/white"
         android:text="@string/starting_life"/>
 
-    <include layout="@layout/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/player_color"/>
-
     <Button
         android:id="@+id/add_health"
         android:layout_width="match_parent"
@@ -69,5 +63,28 @@
         android:layout_height="match_parent"
         android:layout_toLeftOf="@+id/center"
         android:background="@android:color/transparent"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/text_timer"
+            android:tag="NOT_RUNNING"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/timer_button"
+            android:background="@drawable/timer_shape"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="@string/timer"/>
+
+    <Button
+            android:id="@+id/timer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/player_color"
+            android:background="@android:color/transparent"/>
 
 </RelativeLayout>

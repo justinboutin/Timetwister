@@ -51,7 +51,7 @@
             android:text="@string/twenty_life"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:background="@drawable/die"/>
+            android:background="@drawable/rounded_corners_white"/>
 
         <Button
             android:id="@+id/thirty"
@@ -61,7 +61,7 @@
             android:text="@string/thirty_life"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:background="@drawable/die"/>
+            android:background="@drawable/rounded_corners_white"/>
 
         <Button
             android:id="@+id/forty"
@@ -71,17 +71,20 @@
             android:text="@string/forty_life"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:background="@drawable/die"/>
+            android:background="@drawable/rounded_corners_white"/>
 
-        <Button
+        <EditText
             android:id="@+id/custom"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="@string/custom_life"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:hint="@string/custom_life"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:background="@drawable/die"/>
-
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:cursorVisible="false"
+            android:background="@drawable/rounded_corners_white"/>
     </LinearLayout>
 
     <TextView
@@ -93,19 +96,34 @@
             android:textStyle="bold"
             android:text="@string/set_timer"/>
 
-    <EditText
-            android:id="@+id/timer_length"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:background="@drawable/die"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:text="@string/timer"
-            android:inputType="time"/>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:gravity="center"
+                  android:layout_marginTop="5dp">
+
+        <EditText
+                android:id="@+id/timer_length"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_corners_white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:hint="@string/timer"
+                android:inputType="time"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="@string/minutes"
+                android:inputType="number"/>
+    </LinearLayout>
     
     <Button
         android:id="@+id/start_game"
@@ -114,6 +132,6 @@
         android:layout_marginTop="25dp"
         android:text="@string/start_game"
         android:textStyle="bold"
-        android:background="@drawable/die"/>
+        android:background="@drawable/rounded_corners_white"/>
 
 </LinearLayout>

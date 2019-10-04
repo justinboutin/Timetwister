@@ -1,17 +1,32 @@
 package com.example.timetwister
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
+import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v4.content.ContextCompat.startActivity
+import android.text.InputType
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RelativeLayout
+import kotlinx.android.synthetic.main.homescreen.*
+import android.view.View.OnFocusChangeListener
+import android.widget.Toast
+import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import android.support.v4.content.ContextCompat.getSystemService
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class HomeScreenFrag : Fragment() {
 
@@ -27,7 +42,7 @@ class HomeScreenFrag : Fragment() {
                             val buttonTwenty: Button,
                             val buttonThirty: Button,
                             val buttonForty: Button,
-                            val buttonCustom: Button)
+                            val editTextCustom: EditText)
 
     private val NUM_PLAYERS = "NUM_PLAYERS"
     private val oneSelected = 1
@@ -42,7 +57,9 @@ class HomeScreenFrag : Fragment() {
     private val thirtyHP = 30
     private val fortyHP = 40
 
-    private val TIMER = "TIMER"
+    private val defaultTime = 5
+
+    private val TIMER_LENGTH = "TIMER_LENGTH"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,37 +84,37 @@ class HomeScreenFrag : Fragment() {
             view.findViewById(R.id.custom))
 
         // Set Button Listeners
-        val onePlayer = view.findViewById<Button>(R.id.button_one)
+        val onePlayer: Button = view.findViewById(R.id.button_one)
         onePlayer.setOnClickListener {
             players.selected = oneSelected
             dieClick(players)
         }
 
-        val twoPlayer = view.findViewById<Button>(R.id.button_two)
+        val twoPlayer: Button = view.findViewById(R.id.button_two)
         twoPlayer.setOnClickListener {
             players.selected = twoSelected
             dieClick(players)
         }
 
-        val threePlayer = view.findViewById<Button>(R.id.button_three)
+        val threePlayer: Button = view.findViewById(R.id.button_three)
         threePlayer.setOnClickListener {
             players.selected = threeSelected
             dieClick(players)
         }
 
-        val fourPlayer = view.findViewById<Button>(R.id.button_four)
+        val fourPlayer: Button = view.findViewById(R.id.button_four)
         fourPlayer.setOnClickListener {
             players.selected = fourSelected
             dieClick(players)
         }
 
-        val fivePlayer = view.findViewById<Button>(R.id.button_five)
+        val fivePlayer: Button = view.findViewById(R.id.button_five)
         fivePlayer.setOnClickListener {
             players.selected = fiveSelected
             dieClick(players)
         }
 
-        val sixPlayer = view.findViewById<Button>(R.id.button_six)
+        val sixPlayer: Button = view.findViewById(R.id.button_six)
         sixPlayer.setOnClickListener {
             players.selected = sixSelected
             dieClick(players)
@@ -118,29 +135,45 @@ class HomeScreenFrag : Fragment() {
             healthClick(health)
         }
 
-        health.buttonCustom.setOnClickListener {
-            health.lifetotal = 100
-            healthClick(health)
+        // Check if keypress is done key press
+        health.editTextCustom.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
+                health.lifetotal = health.editTextCustom.text.toString().toInt()
+
+                val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+
+                healthClick(health)
+                true
+            } else {
+                false
+            }
         }
 
         val timerLength = view.findViewById<EditText>(R.id.timer_length)
 
         val startGame = view.findViewById<Button>(R.id.start_game)
         startGame.setOnClickListener {
-            startPlaying(players.selected, health.lifetotal, timerLength.text.toString())
+
+            var time = defaultTime
+            if (timerLength.text.toString() != "")
+                time = timerLength.text.toString().toInt()
+
+            startPlaying(players.selected, health.lifetotal, time)
         }
 
         return view
     }
 
-    private fun dieClick(players: SetPlayers) {
-        // function that changes background and sets values when a die button is pressed
-        players.dieOne.setBackgroundResource(R.drawable.die)
-        players.dieTwo.setBackgroundResource(R.drawable.die)
-        players.dieThree.setBackgroundResource(R.drawable.die)
-        players.dieFour.setBackgroundResource(R.drawable.die)
-        players.dieFive.setBackgroundResource(R.drawable.die)
-        players.dieSix.setBackgroundResource(R.drawable.die)
+    private fun dieClick(players: HomeScreenFrag.SetPlayers) {
+        // function that changes background and sets values when a rounded_corners_white button is pressed
+        players.dieOne.setBackgroundResource(R.drawable.rounded_corners_white)
+        players.dieTwo.setBackgroundResource(R.drawable.rounded_corners_white)
+        players.dieThree.setBackgroundResource(R.drawable.rounded_corners_white)
+        players.dieFour.setBackgroundResource(R.drawable.rounded_corners_white)
+        players.dieFive.setBackgroundResource(R.drawable.rounded_corners_white)
+        players.dieSix.setBackgroundResource(R.drawable.rounded_corners_white)
 
         when(players.selected) {
             1 -> players.dieOne.setBackgroundResource(R.drawable.selected)
@@ -149,34 +182,30 @@ class HomeScreenFrag : Fragment() {
             4 -> players.dieFour.setBackgroundResource(R.drawable.selected)
             5 -> players.dieFive.setBackgroundResource(R.drawable.selected)
             6 -> players.dieSix.setBackgroundResource(R.drawable.selected)
-            else -> Log.d("HomeFrag: dieClick", "No die selected")
+            else -> Log.d("HomeFrag: dieClick", "No rounded_corners_white selected")
         }
     }
 
-    private fun healthClick(health: SetLifetotal) {
+    private fun healthClick(health: HomeScreenFrag.SetLifetotal) {
         // function that changes background and sets value when lifetotal button is pressed
-        health.buttonTwenty.setBackgroundResource(R.drawable.die)
-        health.buttonThirty.setBackgroundResource(R.drawable.die)
-        health.buttonForty.setBackgroundResource(R.drawable.die)
-        health.buttonCustom.setBackgroundResource(R.drawable.die)
+        health.buttonTwenty.setBackgroundResource(R.drawable.rounded_corners_white)
+        health.buttonThirty.setBackgroundResource(R.drawable.rounded_corners_white)
+        health.buttonForty.setBackgroundResource(R.drawable.rounded_corners_white)
+        health.editTextCustom.setBackgroundResource(R.drawable.rounded_corners_white)
 
         when(health.lifetotal) {
             20 -> health.buttonTwenty.setBackgroundResource(R.drawable.selected)
             30 -> health.buttonThirty.setBackgroundResource(R.drawable.selected)
             40 -> health.buttonForty.setBackgroundResource(R.drawable.selected)
-            else -> health.buttonCustom.setBackgroundResource(R.drawable.selected)
+            else -> health.editTextCustom.setBackgroundResource(R.drawable.selected)
         }
     }
 
-    private fun startPlaying(numPlayers: Int, lifetotal: Int, time: String) {
+    private fun startPlaying(numPlayers: Int, lifetotal: Int, time: Int) {
         val intent = Intent(activity, PlayingActivity::class.java)
-
-        Log.d("here", numPlayers.toString())
-        Log.d("here", lifetotal.toString())
-
         intent.putExtra(NUM_PLAYERS, numPlayers)
         intent.putExtra(LIFETOTAL, lifetotal)
-        intent.putExtra(TIMER, time)
+        intent.putExtra(TIMER_LENGTH, time)
         startActivity(intent)
     }
 }

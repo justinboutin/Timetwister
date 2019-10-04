@@ -15,17 +15,20 @@
         android:orientation="horizontal"
         android:layout_above="@+id/center">
 
-        <include layout="@layout/flipped_player_layout"
+        <include android:id="@+id/player_one"
+            layout="@layout/flipped_player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
-        <include layout="@layout/flipped_player_layout"
+        <include android:id="@+id/player_two"
+            layout="@layout/flipped_player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
-        <include layout="@layout/flipped_player_layout"
+        <include android:id="@+id/player_three"
+            layout="@layout/flipped_player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -37,21 +40,28 @@
         android:orientation="horizontal"
         android:layout_below="@+id/center">
 
-        <include layout="@layout/player_layout"
+        <include android:id="@+id/player_six"
+            layout="@layout/player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
-        <include layout="@layout/player_layout"
+        <include android:id="@+id/player_five"
+            layout="@layout/player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
-        <include layout="@layout/player_layout"
+        <include android:id="@+id/player_four"
+            layout="@layout/player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <include android:id="@+id/menu_popup"
+             layout="@layout/menu_popup"
+             android:visibility="gone"/>
 
     <include layout="@layout/logo"
         android:layout_width="wrap_content"

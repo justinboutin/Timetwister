@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <View android:layout_height="50dp"
+          android:layout_width="190dp"
+          android:layout_centerInParent="true"
+          android:background="@drawable/rounded_corners_black"/>
+
+    <View android:id="@+id/center"
+          android:layout_height="70dp"
+          android:layout_width="70dp"
+          android:layout_centerInParent="true"
+          android:background="@android:color/transparent"/>
+
+    <ImageView android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_marginRight="10dp"
+               android:layout_centerVertical="true"
+               android:layout_toLeftOf="@+id/center"
+               android:src="@drawable/menu_button_front"
+               android:background="@drawable/rounded_corners_white"/>
+
+    <Button android:id="@+id/homescreen_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/center"
+            android:background="@android:color/transparent"/>
+
+    <ImageView android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_toRightOf="@id/center"
+               android:src="@drawable/reset_button_front"
+               android:background="@drawable/rounded_corners_white"/>
+
+    <Button android:id="@+id/reset_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/center"
+            android:background="@android:color/transparent"/>
+
+
+</RelativeLayout>
