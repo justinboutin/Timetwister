@@ -56,7 +56,7 @@ class PlayingActivity : AppCompatActivity() {
         var fragment: Fragment = HomeScreenFrag()
 
         when (numPlayers) {
-            //1 -> setContentView(R.layout.activity_main)
+            1 -> fragment = OnePlayer()
             2 -> fragment = TwoPlayer()
             3 -> fragment = ThreePlayer()
             4 -> fragment = FourPlayer()

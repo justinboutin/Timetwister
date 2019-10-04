@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include android:id="@+id/player_one"
+             layout="@layout/player_layout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_below="@id/center"/>
+
+    <RelativeLayout android:id="@+id/menu_popup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+        <View android:id="@+id/view"
+              android:layout_height="50dp"
+              android:layout_width="180dp"
+              android:background="@drawable/rounded_corners_black"/>
+
+        <ImageView android:layout_width="40dp"
+                   android:layout_height="40dp"
+                   android:layout_marginLeft="80dp"
+                   android:layout_centerVertical="true"
+                   android:src="@drawable/menu_button_front"
+                   android:background="@drawable/rounded_corners_white"/>
+
+        <Button android:id="@+id/homescreen_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="80dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"/>
+
+        <ImageView android:layout_width="40dp"
+                   android:layout_height="40dp"
+                   android:layout_marginLeft="130dp"
+                   android:layout_centerVertical="true"
+                   android:src="@drawable/reset_button_front"
+                   android:background="@drawable/rounded_corners_white"/>
+
+        <Button android:id="@+id/reset_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="130dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/center"
+                android:background="@android:color/transparent"/>
+    </RelativeLayout>
+
+
+
+    <include layout="@layout/logo"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/menu"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@android:color/transparent"/>
+
+</RelativeLayout>

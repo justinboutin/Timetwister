@@ -111,7 +111,9 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:hint="@string/timer"
-                android:inputType="time"/>
+                android:inputType="number"
+                android:cursorVisible="false"
+                android:imeOptions="actionDone"/>
 
         <TextView
                 android:layout_width="wrap_content"
